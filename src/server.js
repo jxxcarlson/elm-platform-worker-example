@@ -19,10 +19,12 @@ app.get('/echo/:str', (req, res) => {
 // Use Platform.worker
 app.get('/compute/:n', (req, res) => compute(res, req.params.n))
 
+app.get('/result/:n', (req, res) => res.params.n)
+
 function compute(res, n_) {
    var n = parseInt(n_)
    main.ports.process.send(n);
-   res.send('The result in the terminal window')
+   res.send('The result is in the terminal window')
 }
 
 

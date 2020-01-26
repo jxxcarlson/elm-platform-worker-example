@@ -1,11 +1,13 @@
 port module Main exposing (main)
 
 import Platform exposing (Program)
+import Http
 
 port process : (Int -> msg) -> Sub msg
 
 port output : Int -> Cmd msg
 
+replyUrl = "localhost:3000/result/"
 
 main : Program Flags Model Msg
 main =
@@ -22,6 +24,7 @@ type alias Model =
 
 type Msg
     = GotInput Int
+    | GotResult(Result Http.Error String)
 
 
 type alias Flags =
@@ -41,7 +44,23 @@ update msg model =
                 kOut  = transform kIn
                 _ = Debug.log "(in, out)" (kIn, kOut)
             in
-            ( model, output kOut )
+            ( model, output kOut)
+
+        GotResult response ->
+            case response of
+                Ok _ -> (model, Cmd.none)
+                Err _ -> (model, Cmd.none)
+
+
+request1 n =
+  Http.get {url = replyUrl ++ String.fromInt n, expect = Http.expectString GotResult}
+
+request2 n =
+  Http.post
+    { url = replyUrl ++ String.fromInt n
+    , body = Http.emptyBody
+    , expect = Http.expectString GotResult
+    }
 
 
 subscriptions : Model -> Sub Msg
