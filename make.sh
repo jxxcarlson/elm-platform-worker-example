@@ -14,3 +14,4 @@ esac
 
 
 cp src/cli.js run/
+cp src/repl.js run/
