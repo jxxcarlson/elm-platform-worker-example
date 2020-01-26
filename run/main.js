@@ -2836,10 +2836,16 @@ var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $author$project$Main$init = function (_v0) {
 	return _Utils_Tuple2(_Utils_Tuple0, $elm$core$Platform$Cmd$none);
 };
-var $elm$core$Platform$Sub$batch = _Platform_batch;
-var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
+var $elm$core$Basics$identity = function (x) {
+	return x;
+};
+var $author$project$Main$GotInput = function (a) {
+	return {$: 'GotInput', a: a};
+};
+var $elm$json$Json$Decode$int = _Json_decodeInt;
+var $author$project$Ports$process = _Platform_incomingPort('process', $elm$json$Json$Decode$int);
 var $author$project$Main$subscriptions = function (_v0) {
-	return $elm$core$Platform$Sub$none;
+	return $author$project$Ports$process($author$project$Main$GotInput);
 };
 var $elm$json$Json$Decode$succeed = _Json_succeed;
 var $elm$core$Debug$log = _Debug_log;
