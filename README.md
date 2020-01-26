@@ -19,6 +19,8 @@ by ports.
 
 **Comments**
 
+You must have already installed `Node.js`.
+
 1) Compile Main.elm to `./run/main.js` and
 copy `src/cli.js` to `./run/cli.js`
 
