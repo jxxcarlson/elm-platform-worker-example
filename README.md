@@ -7,8 +7,11 @@ input from a CLI via ports, computes a value from the input, and sends it back t
 by ports.  There are two versions of the CLI, described below: a 
 one-shot version, and a repl.
 
-I would like to thank @pd-andy on the Elm Slack for his help
-with this project.
+I would like to thank @pd-andy and @urban-a on the 
+Elm Slack for their help. I was also inspired
+by [Punie's article](https://discourse.elm-lang.org/t/simply-typed-lambda-calculus-in-elm/1772) on his simply-typed lambda calculus 
+interpreter and the [code for it](https://github.com/Punie/elm-stlc).
+ 
 
 
 ## Simple one-shot CLI
