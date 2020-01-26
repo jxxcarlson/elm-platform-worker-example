@@ -1,8 +1,10 @@
-module Main exposing (main)
+port module Main exposing (main)
 
 import Platform exposing (Program)
-import Ports exposing (process, output)
-import Run exposing (transform)
+
+port process : (Int -> msg) -> Sub msg
+
+port output : Int -> Cmd msg
 
 
 main : Program Flags Model Msg
@@ -45,3 +47,13 @@ update msg model =
 subscriptions : Model -> Sub Msg
 subscriptions _ =
     process GotInput
+
+
+-- THE COMPUTATION
+
+transform : Int -> Int
+transform k =
+    case modBy 2 k == 0 of
+        True -> k // 2
+        False -> 3*k+ 1
+
