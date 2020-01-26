@@ -1,5 +1,6 @@
 This is a little experiment to learn how to use Elm's 
-`Platform.worker` and a simple command-line interface.
+`Platform.worker` and make a simple command-line interface
+for it.
 
 **Installation and use:**
 
