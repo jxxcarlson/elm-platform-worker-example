@@ -1,0 +1,9 @@
+.idea/
+NOTES.md
+dist/
+elm-stuff/
+node_modules/
+notUsed/
+package-lock.json
+ts-learn/
+ts/
