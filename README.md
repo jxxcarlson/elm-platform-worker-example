@@ -11,7 +11,7 @@ This is a little experiment to learn how to use Elm's
      `232`
 
 
-** Comments **
+**Comments**
 
 1) Compile Main.elm to `./run/main.js` and
 copy `src/cli.js` to `./run/cli.js`
