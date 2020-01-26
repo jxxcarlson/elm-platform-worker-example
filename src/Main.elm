@@ -35,14 +35,12 @@ init : Flags -> ( Model, Cmd Msg )
 init _ =
     ( (), Cmd.none )
 
-
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         GotInput kIn ->
             let
                 kOut  = transform kIn
-                _ = Debug.log "(in, out)" (kIn, kOut)
             in
             ( model, output kOut)
 
@@ -51,22 +49,9 @@ update msg model =
                 Ok _ -> (model, Cmd.none)
                 Err _ -> (model, Cmd.none)
 
-
-request1 n =
-  Http.get {url = replyUrl ++ String.fromInt n, expect = Http.expectString GotResult}
-
-request2 n =
-  Http.post
-    { url = replyUrl ++ String.fromInt n
-    , body = Http.emptyBody
-    , expect = Http.expectString GotResult
-    }
-
-
 subscriptions : Model -> Sub Msg
 subscriptions _ =
     process GotInput
-
 
 -- THE COMPUTATION
 
