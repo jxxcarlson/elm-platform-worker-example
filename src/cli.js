@@ -1,14 +1,17 @@
 
+// Link to Elm code
 var Elm = require('./main').Elm;
 var main = Elm.Main.init();
 
-
-var kIn =33
-
+// Get data from the command line
+var args = process.argv.slice(2);
+var kIn = parseInt(args[0])
 console.log("\n   Input: ", kIn)
 
-main.ports.process.send(33);
+// Send data to the worker
+main.ports.get.send(kIn);
 
-main.ports.output.subscribe(function(data) {
+// Get data from the worker
+main.ports.put.subscribe(function(data) {
   console.log("   Output: " + JSON.stringify(data) + "\n");
 });

@@ -1,13 +1,39 @@
 port module Main exposing (main)
 
+{-|  A simple Platform.worker program with
+a simple command-line interface:
+
+   `$ sh make.sh `                      -- (1)
+   `$ chmod u+x cli; alias cli='./cli'` -- (2)
+   `$ cli 77`                           -- (3)
+     `232`
+
+1) Compile Main.elm to `./run/main.js` and
+copy `src/cli.js` to `./run/cli.js`
+
+2) Make `cli` executable and make an alias for it
+to avoid awkward typing.
+
+3) Try it out.  The program `cli.js` communicates
+with runtime for the `Platform.worker` program.
+The worker accepts input, computes some output,
+and send the output back through ports.
+
+To do something more interesting, replace
+the `transform` function in `Main.elm`.
+
+-}
+
 import Platform exposing (Program)
-import Http
 
-port process : (Int -> msg) -> Sub msg
 
-port output : Int -> Cmd msg
+type alias InputType = Int
+type alias OutputType = Int
 
-replyUrl = "localhost:3000/result/"
+port get : (InputType -> msg) -> Sub msg
+
+port put : OutputType -> Cmd msg
+
 
 main : Program Flags Model Msg
 main =
@@ -17,14 +43,12 @@ main =
         , subscriptions = subscriptions
         }
 
-
 type alias Model =
     ()
 
 
 type Msg
-    = GotInput Int
-    | GotResult(Result Http.Error String)
+    = Input Int
 
 
 type alias Flags =
@@ -38,24 +62,23 @@ init _ =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        GotInput kIn ->
+        Input kIn ->
             let
                 kOut  = transform kIn
             in
-            ( model, output kOut)
+            ( model, put kOut)
 
-        GotResult response ->
-            case response of
-                Ok _ -> (model, Cmd.none)
-                Err _ -> (model, Cmd.none)
 
 subscriptions : Model -> Sub Msg
 subscriptions _ =
-    process GotInput
+    get Input
 
--- THE COMPUTATION
+{- Below is the input-to-output transformation.
+   It could be anything.  Here we have something
+   simple for demonstration purposes.
+-}
 
-transform : Int -> Int
+transform : InputType -> OutputType
 transform k =
     case modBy 2 k == 0 of
         True -> k // 2
