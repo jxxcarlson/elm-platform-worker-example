@@ -19,50 +19,34 @@ interpreter and the [code for it](https://github.com/Punie/elm-stlc).
 
 **Installation and use:**
 
- 1)  `$ sh make.sh `                     
- 
- 2)  `$ chmod u+x cli; alias cli='./cli'` 
- 
- 3)  `$ cli 77`                          
-     `232`
-
+```bash
+$ npm install
+$ npm build
+$ npm run cli 33  ## for commmand-line interface to worker
+$ npm start       ## for repl interface
+```
 
 **Comments**
 
-You must have already installed `Node.js`.
+1) You must have already installed `Node.js`.
 
-1) Compile Main.elm to `./run/main.js` and
-copy `src/cli.js` to `./run/cli.js` using 
-`sh make.sh`
+2) The file `./cli` is a shell script for running the 
+command-line interface.  Make it executable 
+and make an alias for it to avoid awkward typing.
 
-2) Make `cli` executable and make an alias for it
-to avoid awkward typing.
-
-3) Try it out.  In this example, if the input is
+In this example, if the input is
 even, divide it by 2.  If it is odd, multiply it
-by 3 and add 1.
-
-To do something more interesting with the black box, replace
+by 3 and add 1. To do something more interesting with the black box, replace
 the function 
 
 ```elm
-transform : InputType -> OutputType
+    transform : InputType -> OutputType
 ```
 
-in `Main.elm`
-
-## REPL Version
-
-The source file is `src/repl.js`.
-
-1) Run `sh make.sh`.  
-
-2) Run `node run/repl.js`
-
-Sample session:
+Sample session for `npm start`:
 
 ```elm
-$ node run/repl.js
+$ npm start
 > 17
 52
 > 52
@@ -76,3 +60,6 @@ $ node run/repl.js
 ```
 
 What happens if you keep on with this?
+
+**Note to self:** This code is found 
+at `~/dev/elm/experiments/platform`

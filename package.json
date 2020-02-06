@@ -1,0 +1,27 @@
+{
+  "name": "platform",
+  "version": "1.0.0",
+  "description": "This is a little experiment to learn how to use Elm's  `Platform.worker` and make simple command-line interfaces for it.  The worker is a kind of \"black box\" which accepts  input from a CLI via ports, computes a value from the input, and sends it back to the CLI by ports.  There are two versions of the CLI, described below: a  one-shot version, and a repl.",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "elm make --optimize src/Main.elm --output=compiled/main.js",
+    "start": "node src/repl.js",
+    "cli": "node src/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jxxcarlson/elm-platform-worker-example.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jxxcarlson/elm-platform-worker-example/issues"
+  },
+  "homepage": "https://github.com/jxxcarlson/elm-platform-worker-example#readme"
+}

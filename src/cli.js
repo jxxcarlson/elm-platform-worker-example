@@ -1,6 +1,6 @@
 
 // Link to Elm code
-var Elm = require('./main').Elm;
+var Elm = require('../compiled/main').Elm;
 var main = Elm.Main.init();
 
 // Get data from the command line

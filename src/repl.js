@@ -8,21 +8,30 @@
 // The worker applied a mystery function the input
 // 33 to produce the output 100
 
+// Main.elm has two ports:
+//
+//     port get : (InputType -> msg) -> Sub msg
+//     port put : OutputType -> Cmd msg
+//
+// The first port (get) listens for data from
+// the Javascript program (here!).  Then second port
+// sends data from the Elm to the Javascript program.
+
 const repl = require('repl');
 
 // Link to Elm code
-var Elm = require('./main').Elm;
+var Elm = require('../compiled/main').Elm;
 var main = Elm.Main.init();
 
 // Eval function for the repl
-function eval(cmd, _, __, callback) {
+function eval(input, _, __, callback) {
   main.ports.put.subscribe(
     function putCallback (data) {
       main.ports.put.unsubscribe(putCallback)
       callback(null, data)
     }
   )
-  main.ports.get.send(Number(cmd))
+  main.ports.get.send(Number(input))
 }
 
 repl.start({ prompt: '> ', eval: eval });
