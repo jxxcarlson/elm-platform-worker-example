@@ -35,13 +35,20 @@ $ npm build
 
 **Note.** If the input is
 even, divide it by 2.  If it is odd, multiply it
-by 3 and add 1. To do something more interesting with the black box, replace
-the function
-
+by 3 and add 1. 
 
 ```elm
-    transform : InputType -> OutputType
+transform : InputType -> OutputType
+transform k =
+    case modBy 2 k == 0 of
+        True -> k // 2
+        False -> 3*k+ 1
 ```
+
+To do something more interesting with the black box, replace
+the function `transform`
+
+
 
 
 ## Repl
