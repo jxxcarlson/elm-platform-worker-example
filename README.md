@@ -33,7 +33,8 @@ $ npm build
    Output: 142
 ```
 
-**Note.** The Elm app `Main.elm` defines the function 
+**Note.** Input is transformed to output in
+the Elm app `Main.elm` using the function 
 
 ```elm
 transform : InputType -> OutputType
@@ -42,15 +43,15 @@ transform k =
         True -> k // 2
         False -> 3*k+ 1
 ```
-
+where `InputType` and `OutputType` are aliases for `Int`.
 In words, 
 
 > If the input is
   even, divide it by 2.  If it is odd, multiply it
   by 3 and add 1. 
 
-To do something more interesting with the black box, replace
-the function `transform`
+To do something more interesting, replace
+the function `transform`.
 
 
 
