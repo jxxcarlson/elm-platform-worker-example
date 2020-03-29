@@ -12,19 +12,55 @@ Elm Slack for their help. I was also inspired
 by [Punie's article](https://discourse.elm-lang.org/t/simply-typed-lambda-calculus-in-elm/1772) on his simply-typed lambda calculus 
 interpreter and the [code for it](https://github.com/Punie/elm-stlc).
  
-
-
-## Simple one-shot CLI
-
-
-**Installation and use:**
+ 
+## Installation and Use
 
 ```bash
 $ npm install
 $ npm build
-$ npm run cli 33  ## for commmand-line interface to worker
-$ npm run repl    ## for repl interface
 ```
+
+## One shot CLI
+
+```barsh
+ $ npm run cli 47
+
+> platform@1.0.0 cli /Users/carlson/dev/elm/experiments/platform
+> node src/cli.js "47"
+
+
+   Input:  47
+   Output: 142
+```
+
+**Note.** If the input is
+even, divide it by 2.  If it is odd, multiply it
+by 3 and add 1. To do something more interesting with the black box, replace
+the function
+
+
+```elm
+    transform : InputType -> OutputType
+```
+
+
+## Repl
+
+```bash
+ $ npm run repl
+
+> platform@1.0.0 repl /Users/carlson/dev/elm/experiments/platform
+> node src/repl.js
+
+> 47
+142
+> 142
+71
+> 71
+214
+>
+```
+What happens if you continue with the above?
 
 **Comments**
 
@@ -34,32 +70,6 @@ $ npm run repl    ## for repl interface
 command-line interface.  Make it executable 
 and make an alias for it to avoid awkward typing.
 
-In this example, if the input is
-even, divide it by 2.  If it is odd, multiply it
-by 3 and add 1. To do something more interesting with the black box, replace
-the function 
-
-```elm
-    transform : InputType -> OutputType
-```
-
-Sample session for `npm start`:
-
-```elm
-$ npm start
-> 17
-52
-> 52
-26
-> 26
-13
-> 13
-40
-> 40
-20
-```
-
-What happens if you keep on with this?
 
 **Note to self:** This code is found 
 at `~/dev/elm/experiments/platform`
