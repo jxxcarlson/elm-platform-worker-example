@@ -23,7 +23,7 @@ interpreter and the [code for it](https://github.com/Punie/elm-stlc).
 $ npm install
 $ npm build
 $ npm run cli 33  ## for commmand-line interface to worker
-$ npm start       ## for repl interface
+$ npm run repl    ## for repl interface
 ```
 
 **Comments**

@@ -11,7 +11,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "elm make --optimize src/Main.elm --output=compiled/main.js",
     "start": "node src/repl.js",
-    "cli": "node src/cli.js"
+    "cli": "node src/cli.js",
+    "repl": "node src/repl.js"
   },
   "repository": {
     "type": "git",
