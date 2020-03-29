@@ -51,7 +51,7 @@ In words,
   by 3 and add 1. 
 
 To do something more interesting, replace
-the function `transform`.
+the function `transform` (and if need be, the types).
 
 
 
