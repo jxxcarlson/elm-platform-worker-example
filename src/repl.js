@@ -20,7 +20,7 @@
 const repl = require('repl');
 
 // Link to Elm code
-var Elm = require('../compiled/main').Elm;
+var Elm = require('./main').Elm;
 var main = Elm.Main.init();
 
 // Eval function for the repl

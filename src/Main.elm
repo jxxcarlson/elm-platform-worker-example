@@ -62,11 +62,7 @@ init _ =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        Input kIn ->
-            let
-                kOut  = transform kIn
-            in
-            ( model, put kOut)
+        Input input -> ( model, put (transform input))
 
 
 subscriptions : Model -> Sub Msg

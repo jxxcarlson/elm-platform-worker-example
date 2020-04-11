@@ -1,4 +1,5 @@
 #!/bin/bash
 
-node run/cli.js $*
+node ./src/cli.js $*
+
 
