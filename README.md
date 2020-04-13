@@ -74,7 +74,7 @@ the function `transform` (and if need be, the types).
 What happens if you continue with the above?
 
 **Note:** There is a related command-line interpreter
-in this [repo](https://github.com/jxxcarlson/elm-platform-worker-example). T
+in this [repo](https://github.com/jxxcarlson/elm-cli-load-file).
 The command `load foo.txt` loads the contents of `./foo.txt` into memory.
 The command `show` displays the contents of the file in memory.
 
